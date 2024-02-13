@@ -7,6 +7,11 @@ const endpointsInfo = {
   },
 };
 
+/**
+ * Generates an HTML response containing information about API endpoints.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 export default function endpointsInfosHTMLResponse(req, res) {
   let html = '<h1 style="color: red">API Endpoints</h1>';
   for (const key in endpointsInfo) {
