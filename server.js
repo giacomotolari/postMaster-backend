@@ -1,17 +1,17 @@
 import "./config.js";
 import express from "express";
-import logEndpoints from "./utils/logEndpoints.js";
+import endpointsInfosHTMLResponse from "./utils/endpointsInfosHTMLResponse.js";
+import { postsRouter, postsMainPath } from "./routes/postsRoutes.js";
 
 const port = process.env.PORT;
 const app = express();
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("Hello!");
-});
+app.use(postsMainPath, postsRouter);
+
+app.get("/", endpointsInfosHTMLResponse);
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port} \n`);
-  logEndpoints(app, port);
+  console.log(`Server is running on http://localhost:${port} \n`);
 });
